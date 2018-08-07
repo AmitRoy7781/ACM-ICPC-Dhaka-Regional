@@ -3,7 +3,7 @@ using namespace std;
 
 #define     LL      long long
 #define     inf     LLONG_MAX
-#define     MAX     200007
+#define     MAX     20000007
 #define     MOD     1000000007
 #define     pll     pair<LL,LL>
 #define     pii     pair<int,int>
@@ -27,6 +27,20 @@ using namespace std;
 #define     prC(a)  printf("%c",a)
 #define     prS(a)  printf("%s",a)
 
+long long sum[MAX];
+
+void process()
+{
+    for(int i=1;i<MAX;i++)
+    {
+        for(int j=i;j<MAX;j+=i)
+        {
+            sum[j]+=i;
+        }
+    }
+    for(int i=3;i<MAX;i++)
+        sum[i]+= sum[i-1];
+}
 
 int main ()
 {
@@ -34,25 +48,17 @@ int main ()
     cin.tie(0);
     cout.tie(0);
 
-
-    int tc,cn=1;
-    scI(tc);
-    while(tc--)
+    process();
+    while(true)
     {
+        int n;
+        scI(n);
+        if(!n)  break;
 
-        char ch[MAX];
-        int cnt[27],res=INT_MAX;
-        CLR(cnt);
-        scS(ch);
-        for(int i=0;ch[i];i++)
-        {
-            int temp = ch[i] - 'a';
-            cnt[temp]++;
-        }
-        for(int i=0;i<26;i++)
-            res = min(res,cnt[i]);
-        printf("Case %d: %d\n",cn++,res);
+        printf("%lld\n",sum[n]);
 
     }
     return 0;
 }
+
+
