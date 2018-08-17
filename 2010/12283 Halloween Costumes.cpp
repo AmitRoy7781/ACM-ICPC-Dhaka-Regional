@@ -27,6 +27,27 @@ using namespace std;
 #define     prC(a)  printf("%c",a)
 #define     prS(a)  printf("%s",a)
 
+ll dp[107][107];
+int ara[107];
+
+ll solve(int L,int R)
+{
+    if(L>R) return 0;
+
+    ll &ret = dp[L][R];
+    if(ret==-1)
+    {
+         ret = 1+solve(L+1,R);
+        for(int i=L+1;i<=R;i++)
+        {
+            if(ara[i]==ara[L])
+            {
+                ret = min(ret, solve(L+1,i)+solve(i+1,R));
+            }
+        }
+    }
+    return ret;
+}
 
 int main ()
 {
@@ -34,6 +55,27 @@ int main ()
     cin.tie(0);
     cout.tie(0);
 
+    int tc,cn=1,temp;
+
+    cin>>tc;
+    while(tc--)
+    {
+
+        int n,m,j=0;
+        cin>>n>>m;
+        ara[0] = -1;
+        for(int i=0;i<n;i++)
+        {
+            cin>>temp;
+            if(temp!=ara[j])  ara[++j] = temp;
+        }
+
+        SET(dp);
+        int res = solve(1,j);
+        cout<<"Case "<<cn++<<": "<<res<<endl;
+    }
+
     return 0;
 }
+
 

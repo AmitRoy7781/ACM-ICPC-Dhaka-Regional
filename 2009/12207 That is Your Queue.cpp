@@ -34,6 +34,51 @@ int main ()
     cin.tie(0);
     cout.tie(0);
 
+    int p,c,cur=0;
+    string temp;
+    int id,cn=1;
+    vector<int> v;
+
+    while(true)
+    {
+
+        cin>>p>>c;
+        if(!p && !c)    break;
+
+        cout<<"Case "<<cn++<<":"<<endl;
+        v.clear();
+        for(int i=1;i<=min(p,c);i++)
+            v.push_back(i);
+
+        cur = 0;
+        for(int i=0;i<c;i++)
+        {
+            cin>>temp;
+            if(temp=="N")
+            {
+
+                cout<<v[cur]<<endl;
+                cur ++;
+                cur = cur % v.size();
+            }
+            else
+            {
+                cin>>id;
+                v.insert(v.begin()+cur,id);
+                for(int i=0;i<v.size();i++)
+                {
+                    if(i!=cur && v[i]==id)
+                    {
+                        v.erase(v.begin()+i);
+
+                        if(i<cur)   cur--;
+                        break;
+                    }
+                }
+
+            }
+        }
+    }
     return 0;
 }
 
