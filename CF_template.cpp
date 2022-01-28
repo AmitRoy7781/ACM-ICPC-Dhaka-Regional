@@ -23,7 +23,7 @@ typedef pair<ll, ll>     pll;
  
 #define     inf     (1000000000)
 #define     infl    (1000000000000000000LL)
-#define     MAX     3007
+#define     MAX     200007
 #define     MOD     1000000007
 #define     eps     1e-6
 #define     FIN     freopen("input.txt","r",stdin);
