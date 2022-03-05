@@ -12,9 +12,6 @@ using namespace std;
  
  
 typedef long long       ll;
-typedef array<ll, 2>   all;
-typedef array<int, 2>   aii;
-typedef pair<ll, ll>     pll;
  
 #define     all(a)  a.begin(), a.end()
 #define     pb      push_back
